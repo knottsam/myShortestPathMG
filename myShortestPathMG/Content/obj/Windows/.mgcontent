@@ -5,9 +5,11 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/GrassTile.png</File>
+    <File>C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/myFont.spritefont</File>
     <File>C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/Oak.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
