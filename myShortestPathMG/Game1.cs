@@ -11,7 +11,10 @@ namespace myShortestPathMG
         private SpriteBatch _spriteBatch;
 
         private Texture2D _tileTexture;
-        private List<Tile> _tiles;
+        private List<Node> _nodes;
+        private Node? _startNode;
+        private Node? _endNode;
+        private MouseState _previousMouseState;
 
         //Set tile properties
         private const int tileSize = 35;
@@ -42,14 +45,14 @@ namespace myShortestPathMG
             // project with the same name as TileTextureName.
             _tileTexture = Content.Load<Texture2D>("GrassTile");
 
-            // Create a simple grid of tiles.
-            _tiles = new List<Tile>();
+            // Create a simple grid of nodes.
+            _nodes = new List<Node>();
             for (int y = 0; y < rows; y++)
             {
                 for (int x = 0; x < cols; x++)
                 {
                     Rectangle bounds = new Rectangle(x * tileSize, y * tileSize, tileSize, tileSize);
-                    _tiles.Add(new Tile(_tileTexture, bounds));
+                    _nodes.Add(new Node(_tileTexture, bounds));
                 }
             }
         }
@@ -59,7 +62,7 @@ namespace myShortestPathMG
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            HandleMouseInput();
 
             base.Update(gameTime);
         }
@@ -69,16 +72,71 @@ namespace myShortestPathMG
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            if (_tiles != null)
+            if (_nodes != null)
             {
-                foreach (Tile tile in _tiles)
+                foreach (Node node in _nodes)
                 {
-                    tile.Draw(_spriteBatch);
+                    node.Draw(_spriteBatch);
                 }
             }
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void HandleMouseInput()
+        {
+            MouseState mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed && _previousMouseState.LeftButton == ButtonState.Released)
+            {
+                Point position = mouseState.Position;
+                foreach (var node in _nodes)
+                {
+                    if (node.Bounds.Contains(position))
+                    {
+                        if (_startNode == null)
+                        {
+                            ClearNode(node);
+                            _startNode = node;
+                            node.Type = NodeType.Start;
+                        }
+                        else if (_endNode == null && node != _startNode)
+                        {
+                            ClearNode(node);
+                            _endNode = node;
+                            node.Type = NodeType.End;
+                        }
+                        else if (node == _startNode)
+                        {
+                            node.Type = NodeType.Normal;
+                            _startNode = null;
+                        }
+                        else if (node == _endNode)
+                        {
+                            node.Type = NodeType.Normal;
+                            _endNode = null;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            _previousMouseState = mouseState;
+        }
+
+        private void ClearNode(Node node)
+        {
+            if (node == _startNode)
+            {
+                _startNode.Type = NodeType.Normal;
+                _startNode = null;
+            }
+            if (node == _endNode)
+            {
+                _endNode.Type = NodeType.Normal;
+                _endNode = null;
+            }
         }
     }
 }
