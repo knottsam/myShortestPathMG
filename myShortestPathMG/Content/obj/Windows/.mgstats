@@ -1,2 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/GrassTile.png","C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/bin/Windows/GrassTile.xnb","TextureProcessor","Texture2DContent",7082,25685,0.1740529
+"C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/GrassTile.png","C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/bin/Windows/GrassTile.xnb","TextureProcessor","Texture2DContent",7082,25685,0.2682732
+"C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/Oak.png","C:/Users/SKnott/source/repos/myShortestPathMG/myShortestPathMG/Content/bin/Windows/Oak.xnb","TextureProcessor","Texture2DContent",613,25685,0.00565

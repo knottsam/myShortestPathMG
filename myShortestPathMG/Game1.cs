@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace myShortestPathMG
 {
@@ -13,14 +12,14 @@ namespace myShortestPathMG
 
         private Texture2D _tileTexture;
         private List<Node> _nodes;
-        private Node? _startNode;
-        private Node? _endNode;
+        private Node _startNode;
+        private Node _endNode;
         private MouseState _previousMouseState;
 
         //Set tile properties
-        private const int tileSize = 35;
-        private const int rows = 20;
-        private const int cols = 20;
+        private const int tileSize = 50;
+        private const int rows = 12;
+        private const int cols = 22;
 
         public Game1()
         {
@@ -43,8 +42,7 @@ namespace myShortestPathMG
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load the tile texture. Ensure the asset is added to the Content
-            // project with the same name as TileTextureName.
-            _tileTexture = Content.Load<Texture2D>("GrassTile");
+            _tileTexture = Content.Load<Texture2D>("Oak");
 
             // Create a simple grid of nodes.
             _nodes = new List<Node>();
@@ -71,7 +69,7 @@ namespace myShortestPathMG
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
             if (_nodes != null)
@@ -127,10 +125,8 @@ namespace myShortestPathMG
                     }
                 }
             }
-
             _previousMouseState = mouseState;
         }
-
 
         private void ClearNode(Node node)
         {

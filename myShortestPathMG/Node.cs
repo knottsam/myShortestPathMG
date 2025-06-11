@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 
 namespace myShortestPathMG
 {
@@ -22,13 +21,11 @@ namespace myShortestPathMG
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            int alpha = 160;
-
             Color color = Type switch
             {
-                NodeType.Start => Color.YellowGreen,
-                NodeType.End => Color.Red,
-                _ => new Color(Color.White.R, Color.White.G, Color.White.B, alpha)
+                NodeType.Start => Color.LawnGreen,
+                NodeType.End => Color.PaleVioletRed,
+                _ => Color.White
             };
 
             spriteBatch.Draw(Texture, Bounds, color);
