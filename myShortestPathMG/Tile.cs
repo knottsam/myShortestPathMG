@@ -14,7 +14,7 @@ namespace myShortestPathMG
             Bounds = bounds;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Bounds, Color.White);
         }
