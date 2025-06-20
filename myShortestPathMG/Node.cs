@@ -9,7 +9,9 @@ namespace myShortestPathMG
         Normal,
         Start,
         End,
-        Wall
+        Wall,
+        Path,
+        Inspected
     }
 
     public class Node : Tile
@@ -29,6 +31,8 @@ namespace myShortestPathMG
                 NodeType.Start => Color.LawnGreen,
                 NodeType.End => Color.PaleVioletRed,
                 NodeType.Wall => Color.SlateGray,
+                NodeType.Path => Color.Orange,
+                NodeType.Inspected => Color.PaleTurquoise,
                 _ => Color.White
             };
 
